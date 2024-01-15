@@ -1,5 +1,4 @@
 <script setup>
-import { RouterLink } from "vue-router";
 import Header from "@/components/Header.vue";
 import Footer from "@/components/Footer.vue";
 </script>
@@ -8,7 +7,7 @@ import Footer from "@/components/Footer.vue";
   <div id="app">
     <Header />
     <main id="main">
-      <router-link to="/">Home</router-link>
+      <router-view />
     </main>
     <Footer />
   </div>
