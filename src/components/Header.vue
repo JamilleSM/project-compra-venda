@@ -4,7 +4,7 @@
   <header>
     <nav>
       <router-link to="/" class="logo">
-        <img src="../assets/ranek.svg" alt="logo" />
+        <img src="../assets/logo.svg" alt="logo" />
       </router-link>
       <router-link to="/" class="btn">Vender / Login</router-link>
     </nav>
@@ -25,6 +25,6 @@ nav {
 }
 
 .logo img {
-  width: 90px;
+  width: 180px;
 }
 </style>
