@@ -17,5 +17,14 @@ nav {
   align-items: center;
   justify-content: space-between;
   padding: 15px 20px;
+  box-shadow: 0 2px 4px rgb(0, 0, 0, 0.2);
+}
+
+.log {
+  padding: 10px 0;
+}
+
+.logo img {
+  width: 90px;
 }
 </style>
