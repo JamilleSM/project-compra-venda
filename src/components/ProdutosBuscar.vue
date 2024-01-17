@@ -6,9 +6,8 @@
         id="lupa"
         type="submit"
         value="Buscar"
-        @click.prevent="BuscarProduto"
+        @click.prevent="buscarProdutos"
       />
-      {{ busca }}
     </form>
   </section>
 </template>
@@ -21,7 +20,9 @@ export default {
     };
   },
   methods: {
-    //
+    buscarProdutos() {
+      this.$router.push({ query: { q: this.busca } });
+    },
   },
 };
 </script>

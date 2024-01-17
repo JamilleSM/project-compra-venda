@@ -6,7 +6,7 @@
       <router-link to="/" class="logo">
         <img src="../assets/logo.svg" alt="logo" />
       </router-link>
-      <router-link to="/" class="btn">Vender / Login</router-link>
+      <router-link to="/" class="btn">Login</router-link>
     </nav>
   </header>
 </template>
