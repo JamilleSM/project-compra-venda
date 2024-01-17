@@ -52,3 +52,23 @@ img {
   background: #222;
   transform: scale(1.1);
 }
+
+input,
+textarea {
+  border-radius: 4px;
+  padding: 15px;
+  border: 1px solid #fff;
+  box-shadow: 0 4px 8px rgb(0, 0, 0, 0.1);
+  transition: all 0.3s;
+  font-size: 1rem;
+  margin-bottom: 15px;
+}
+
+input:hover,
+input:focus,
+textarea:focus,
+textarea:hover {
+  outline: none;
+  box-shadow: 0 8px 16px rgb(0, 0, 0, 0.2);
+  border-color: #222;
+}
