@@ -6,7 +6,7 @@
         name="busca"
         type="text"
         v-model="busca"
-        placeholder="Buscar produto"
+        placeholder="search.."
       />
       <input
         id="lupa"
@@ -28,6 +28,7 @@ export default {
   methods: {
     buscarProdutos() {
       this.$router.push({ query: { q: this.busca } });
+      this.busca = "";
     },
   },
 };
