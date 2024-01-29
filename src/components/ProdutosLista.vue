@@ -1,6 +1,5 @@
 <template>
   <section class="produtos-container">
-    <p>Quantidade: {{ produtosTotal }}</p>
     <div v-if="produtos && produtos.length" class="produtos">
       <div class="produto" v-for="(produto, index) in produtos" :key="index">
         <router-link to="" />
