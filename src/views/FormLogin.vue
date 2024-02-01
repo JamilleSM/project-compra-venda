@@ -1,8 +1,8 @@
 <template>
   <form class="container">
     <div class="form-input">
-      <input type="text" v-model="email" placeholder="email" />
-      <input type="password" v-model="senha" placeholder="senha" />
+      <input type="text" v-model="loginData.email" placeholder="email" />
+      <input type="password" v-model="loginData.senha" placeholder="senha" />
       <input
         class="btn btn-login"
         id="lupa"
@@ -16,15 +16,57 @@
       <img class="icon" src="../assets/seta.svg" alt="seta" />
     </router-link>
   </form>
+
+  <div v-if="showErro" class="error-message">
+    {{ errorMessage }}
+  </div>
 </template>
 
 <script>
+import { api } from "@/api/services";
+
 export default {
   data() {
     return {
-      email: "",
-      senha: "",
+      loginData: {
+        email: "",
+        senha: "",
+      },
+      showErro: false,
+      errorMessage: "",
+      base: "usuario",
+      mutation: "UPDATE_USUARIO",
     };
+  },
+  methods: {
+    async FormLogin() {
+      try {
+        const response = await api.login(this.loginData);
+
+        if (
+          response &&
+          response.data &&
+          response.data.message === "Login bem-sucedido"
+        ) {
+          this.$router.push("/");
+          console.log("Usuário autenticado com sucesso");
+        } else {
+          this.showErro = true;
+          this.errorMessage = "Falha no login. Verifique suas credenciais.";
+
+          setTimeout(() => {
+            this.showErro = false;
+          }, 5000);
+        }
+      } catch (error) {
+        this.showErro = true;
+        this.errorMessage = "Erro ao fazer login. Verifique suas credenciais.";
+
+        setTimeout(() => {
+          this.showErro = false;
+        }, 5000);
+      }
+    },
   },
 };
 </script>
@@ -58,6 +100,12 @@ export default {
   justify-content: center;
 }
 .icon {
+  margin-left: 8px;
+}
+
+.error-message {
+  color: red;
+  margin-top: 10px;
   margin-left: 8px;
 }
 </style>

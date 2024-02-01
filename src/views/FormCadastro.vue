@@ -1,6 +1,7 @@
 <template>
   <form class="container">
     <div class="form-input">
+      <h2>Dados Pessoais:</h2>
       <input
         type="text"
         v-model="userData.email"
@@ -16,10 +17,28 @@
         v-model="userData.senha"
         placeholder="Digite uma senha"
       />
+      <h2>Endereço:</h2>
+      <input type="text" v-model="userData.cep" placeholder="Digite seu cep" />
       <input
-        type="password"
-        v-model="userData.senha"
-        placeholder="Confime a senha"
+        type="text"
+        v-model="userData.bairro"
+        placeholder="Digite seu bairro"
+      />
+      <input type="text" v-model="userData.rua" placeholder="Digite sua rua" />
+      <input
+        type="text"
+        v-model="userData.numero"
+        placeholder="Digite o logradouro"
+      />
+      <input
+        type="text"
+        v-model="userData.cidade"
+        placeholder="Digite sua cidade"
+      />
+      <input
+        type="text"
+        v-model="userData.estado"
+        placeholder="Digite seu estado"
       />
       <input
         class="btn btn-login"
@@ -39,7 +58,7 @@
     Usuário cadastrado com sucesso!
   </div>
   <div v-if="showErro" class="error-message">
-    Usuário já cadastrado! {{ errorMessage }}
+    Usuário já cadastrado! {{ errorMessage }}.
   </div>
 </template>
 
@@ -53,6 +72,12 @@ export default {
         nome: "",
         email: "",
         senha: "",
+        cep: "",
+        bairro: "",
+        rua: "",
+        numero: "",
+        cidade: "",
+        estado: "",
       },
       showSuccess: false,
       showErro: false,
@@ -65,10 +90,7 @@ export default {
         const response = await api.post("/usuario", this.userData);
         console.log("usuario cadastrado");
 
-        this.userData.nome = "";
-        this.userData.email = "";
-        this.userData.senha = "";
-
+        this.userData = "";
         this.showSuccess = true;
 
         setTimeout(() => {
@@ -90,6 +112,9 @@ export default {
 </script>
 
 <style scoped>
+h2 {
+  margin-bottom: 10px;
+}
 .container {
   width: 600px;
   margin: 0 auto;
@@ -112,7 +137,7 @@ export default {
 
 .link {
   color: #4f63ac;
-  margin-bottom: 24px;
+  margin-bottom: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -125,11 +150,13 @@ export default {
   color: green;
   margin-top: 10px;
   margin-left: 8px;
+  margin-bottom: 20px;
 }
 
 .error-message {
   color: red;
   margin-top: 10px;
   margin-left: 8px;
+  margin-bottom: 20px;
 }
 </style>

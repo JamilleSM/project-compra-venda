@@ -4,6 +4,19 @@ const axiosInstance = axios.create({
   baseURL: "http://ranek.local/wp-json/api",
 });
 
+axiosInstance.interceptors.request.use(
+  function (config) {
+    const token = localStorage.getItem("token");
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+  },
+  function (error) {
+    return Promise.reject(error);
+  }
+);
+
 export const api = {
   get(endpoint) {
     return axiosInstance.get(endpoint);
@@ -18,12 +31,6 @@ export const api = {
     return axiosInstance.delete(endpoint);
   },
   login(body) {
-    return axios.post(url + "/jwt-auth/v1/token", body);
-  },
-  validateToken() {
-    return axiosInstance.post(url + "/jwt-auth/v1/toke/validate");
-  },
-  register(body) {
-    return axiosInstance.post("/usuario", body);
+    return axiosInstance.post("/usuario/login", body);
   },
 };
