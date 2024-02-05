@@ -1,29 +1,30 @@
-# vue-project
+## Vue Project - Compra e Venda
 
-This template should help get you started developing with Vue 3 in Vite.
+Este é um projeto Vue.js que permite a compra e venda de produtos, com recursos de autenticação, cadastro de usuários e integração com uma API REST baseada no WordPress.
 
-## Recommended IDE Setup
+# Recursos
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+- Tela de Login e Cadastro de Usuários
+- Compra de produtos
+- Venda de produtos
+- Integração com API REST WordPress
+- Gerenciamento de estado com Vuex
 
-## Customize configuration
+## API
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+Link da API utilizada no projeto:
+https://github.com/JamilleSM/estudos-wordpress-restapi
 
 ## Project Setup
+
+1. Instalação de Dependências:
 
 ```sh
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+2. Execução Local:
 
 ```sh
 npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
 ```

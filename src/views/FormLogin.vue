@@ -25,6 +25,12 @@
 <script>
 import { api } from "@/api/services";
 
+export const LOGIN_SUCCESS_MESSAGE = "Login bem-sucedido";
+export const LOGIN_ERROR_MESSAGE =
+  "Falha no login. Verifique suas credenciais.";
+export const GENERIC_ERROR_MESSAGE =
+  "Erro ao fazer login. Verifique suas credenciais.";
+
 export default {
   data() {
     return {
@@ -39,32 +45,27 @@ export default {
     };
   },
   methods: {
+    handleLoginError(message) {
+      this.showErro = true;
+      this.errorMessage = message;
+
+      setTimeout(() => {
+        this.showErro = false;
+      }, 5000);
+    },
+
     async FormLogin() {
       try {
-        const response = await api.login(this.loginData);
+        const { data } = await api.login(this.loginData);
 
-        if (
-          response &&
-          response.data &&
-          response.data.message === "Login bem-sucedido"
-        ) {
+        if (data && data.message === LOGIN_SUCCESS_MESSAGE) {
           this.$router.push("/");
           console.log("Usuário autenticado com sucesso");
         } else {
-          this.showErro = true;
-          this.errorMessage = "Falha no login. Verifique suas credenciais.";
-
-          setTimeout(() => {
-            this.showErro = false;
-          }, 5000);
+          this.handleLoginError(LOGIN_ERROR_MESSAGE);
         }
       } catch (error) {
-        this.showErro = true;
-        this.errorMessage = "Erro ao fazer login. Verifique suas credenciais.";
-
-        setTimeout(() => {
-          this.showErro = false;
-        }, 5000);
+        this.handleLoginError(GENERIC_ERROR_MESSAGE);
       }
     },
   },
